@@ -6,8 +6,10 @@ import { and, eq } from "drizzle-orm";
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await context.params;
+
   try {
     const { auth } = await createClient();
     const userId = (await auth.getUser()).data.user?.id;
@@ -19,9 +21,7 @@ export async function DELETE(
     const existingCVs = await db
       .select()
       .from(cvs)
-      .where(
-        and(eq(cvs.categoryId, parseInt(params.id)), eq(cvs.userId, userId))
-      );
+      .where(and(eq(cvs.categoryId, parseInt(id)), eq(cvs.userId, userId)));
 
     if (existingCVs.length > 0) {
       return NextResponse.json(
@@ -33,10 +33,7 @@ export async function DELETE(
     await db
       .delete(categories)
       .where(
-        and(
-          eq(categories.id, parseInt(params.id)),
-          eq(categories.userId, userId)
-        )
+        and(eq(categories.id, parseInt(id)), eq(categories.userId, userId))
       );
 
     return NextResponse.json({ success: true });
@@ -51,8 +48,10 @@ export async function DELETE(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await context.params;
+
   try {
     const { name } = (await request.json()) as { name: string };
 
@@ -74,10 +73,7 @@ export async function PUT(
       .update(categories)
       .set({ name })
       .where(
-        and(
-          eq(categories.id, parseInt(params.id)),
-          eq(categories.userId, userId)
-        )
+        and(eq(categories.id, parseInt(id)), eq(categories.userId, userId))
       )
       .returning();
 
