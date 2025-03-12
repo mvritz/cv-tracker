@@ -1,0 +1,108 @@
+"use client";
+
+import { Disclosure } from "@headlessui/react";
+import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+
+const faqs = [
+  {
+    question: "How does CVTracker help with my job search?",
+    answer:
+      "CVTracker helps you organize all aspects of your job search in one place. You can store different versions of your CV, track application statuses, set reminders for interviews, and analyze your application success rates through our comprehensive dashboard - all completely free and open source.",
+  },
+  {
+    question: "Is CVTracker really free?",
+    answer:
+      "Yes, CVTracker is 100% free and open source! We believe in providing powerful tools to job seekers without any cost. You can use all features without limitations, and the code is available on GitHub for transparency and community contributions.",
+  },
+  {
+    question: "How is my data handled?",
+    answer:
+      "Your data privacy is our priority. CVTracker is self-hosted, meaning you have complete control over your data. All data is stored locally on your chosen infrastructure, and you can review our security practices in our open source codebase.",
+  },
+  {
+    question: "Can I contribute to CVTracker?",
+    answer:
+      "Absolutely! CVTracker is an open source project and we welcome contributions from the community. Whether it's bug fixes, new features, or documentation improvements, you can find our contribution guidelines on our GitHub repository.",
+  },
+  {
+    question: "Can I export my application data?",
+    answer:
+      "Yes, you have full control over your data. You can export your application data and analytics in various formats (CSV, PDF) for your records or analysis. Being open source means you can also customize the export format to your needs.",
+  },
+  {
+    question: "Do you offer integrations with job boards?",
+    answer:
+      "We're actively developing integrations with major job boards and professional networks. As an open source project, you can also contribute to building new integrations or customize existing ones to fit your workflow.",
+  },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
+export function LandingFAQ() {
+  return (
+    <section className="py-20 bg-muted/50" id="faq">
+      <div className="flex flex-col items-center max-w-7xl mx-auto px-4 md:px-6">
+        <motion.div
+          className="text-center mb-16 w-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-4 text-xl text-muted-foreground">
+            Everything you need to know about CVTracker
+          </p>
+        </motion.div>
+        <motion.div
+          className="w-full max-w-3xl"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {faqs.map((faq, index) => (
+            <motion.div key={index} variants={item}>
+              <Disclosure
+                as="div"
+                className="mt-4 rounded-lg bg-background border"
+              >
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button className="flex w-full justify-between rounded-lg px-4 py-4 text-left text-lg font-medium hover:bg-muted/50">
+                      <span>{faq.question}</span>
+                      <ChevronDown
+                        className={`${
+                          open ? "rotate-180 transform" : ""
+                        } h-5 w-5 text-primary transition-transform duration-200`}
+                      />
+                    </Disclosure.Button>
+                    <Disclosure.Panel className="px-4 pb-4 pt-2 text-muted-foreground">
+                      {faq.answer}
+                    </Disclosure.Panel>
+                  </>
+                )}
+              </Disclosure>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
