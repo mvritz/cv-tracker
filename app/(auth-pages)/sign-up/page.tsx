@@ -4,13 +4,13 @@ import { SubmitButton } from "@/components/auth/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { SmtpMessage } from "../smtp-message";
 import { WavyBackground } from "@/components/ui/background";
 
 export default async function Signup(props: {
   searchParams: Promise<Message>;
 }) {
   const searchParams = await props.searchParams;
+
   if ("message" in searchParams) {
     return (
       <WavyBackground className="min-h-screen w-full flex items-center justify-center">
@@ -75,7 +75,6 @@ export default async function Signup(props: {
                 />
               </div>
             </div>
-
             <SubmitButton
               formAction={signUpAction}
               pendingText="Signing up..."
@@ -83,12 +82,8 @@ export default async function Signup(props: {
             >
               Sign up
             </SubmitButton>
-
             <FormMessage message={searchParams} />
           </form>
-          <div className="mt-6">
-            <SmtpMessage />
-          </div>
         </div>
       </div>
     </WavyBackground>

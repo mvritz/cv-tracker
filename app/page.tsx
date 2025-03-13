@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { WavyBackground } from "@/components/ui/background";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { IconArrowRight } from "@tabler/icons-react";
 
 const Chart = dynamic(() => import("@/components/chart/pie-chart"), {
   ssr: false,
@@ -39,7 +40,8 @@ const demoData = [
 const features = [
   {
     title: "Track Applications",
-    description: "Keep all your job applications organized in one place",
+    description:
+      "Keep all your job, college, internship and many more applications organized in one place",
     icon: FileText,
   },
   {
@@ -246,20 +248,20 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-
         <LandingFAQ />
-
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto max-w-4xl px-4 text-center">
             <h2 className="text-3xl font-bold mb-6">
               Take Control of Your Job Search
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Join professionals who are managing their job applications
-              efficiently and effectively.
+              Join professionals who are managing their applications efficiently
+              and effectively.
             </p>
             <Button size="lg" variant="secondary" asChild>
-              <Link href="/sign-up">Start Tracking Now</Link>
+              <Link href="/sign-up" className="flex items-center gap-2">
+                Start Now <IconArrowRight />
+              </Link>
             </Button>
           </div>
         </section>

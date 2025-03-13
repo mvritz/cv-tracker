@@ -43,7 +43,7 @@ export default async function AppPage() {
     <div className="container mx-auto py-6 space-y-8">
       <PageHeader
         title="CV Management"
-        description="Track and manage your job applications in one place"
+        description="Track and manage your applications in one place"
         user={{ email: user.email || "" }}
         cvs={transformedCvs}
       />

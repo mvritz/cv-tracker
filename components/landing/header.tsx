@@ -93,28 +93,38 @@ export function LandingHeader() {
         </button>
       </div>
       {isMenuOpen && (
-        <div className="container md:hidden px-8">
-          <div className="flex flex-col space-y-6 py-6">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
-                className="text-sm font-medium text-gray-900 transition-colors hover:text-primary"
-              >
-                {item.name}
-              </a>
-            ))}
-            <div className="flex flex-col gap-4 pt-2">
-              <Button variant="outline" asChild>
-                <Link href="/login">Log in</Link>
-              </Button>
-              <Button className="bg-primary hover:bg-primary/90" asChild>
-                <Link href="/signup">Sign up</Link>
-              </Button>
-            </div>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="fixed inset-x-0 top-20 bg-background/95 backdrop-blur-sm border-b shadow-sm md:hidden"
+        >
+          <div className="container py-6 px-8">
+            <nav className="flex flex-col space-y-6">
+              {navigation.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleClick(e, item.href)}
+                  className="text-base font-medium text-foreground/80 hover:text-primary transition-colors"
+                >
+                  {item.name}
+                </a>
+              ))}
+              <div className="flex flex-col gap-4 pt-2">
+                <Button variant="outline" asChild className="w-full">
+                  <Link href="/sign-in">Log in</Link>
+                </Button>
+                <Button
+                  className="bg-primary hover:bg-primary/90 w-full"
+                  asChild
+                >
+                  <Link href="/sign-up">Sign up</Link>
+                </Button>
+              </div>
+            </nav>
           </div>
-        </div>
+        </motion.div>
       )}
     </motion.header>
   );

@@ -25,65 +25,41 @@ const footerLinks = {
     },
     {
       name: "Contributing",
-      href: "https://github.com/mvritz/cv-tracker/blob/main/CONTRIBUTING.md",
+      href: "https://github.com/mvritz/cv-tracker/blob/main/README.md",
     },
   ],
 };
-
-const socialLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/mvritz/cv-tracker",
-    icon: Github,
-  },
-  { name: "Twitter", href: "https://twitter.com/mvritz", icon: Twitter },
-  { name: "Email", href: "mailto:contact@cv-tracker.com", icon: Mail },
-];
 
 export function LandingFooter() {
   return (
     <footer className="border-t bg-white">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-8 px-6 py-12 md:grid-cols-12 md:py-16 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 px-4 py-8 sm:px-6 sm:py-12 md:grid-cols-12 lg:px-8 lg:py-16">
           <div className="col-span-12 md:col-span-4 lg:col-span-5">
-            <Link href="/" className="flex items-center gap-3 mb-6">
+            <Link href="/" className="flex items-center gap-3 mb-4 sm:mb-6">
               <div className="p-2 bg-primary/10 rounded-lg">
-                <FileText className="h-6 w-6 text-primary" />
+                <FileText className="h-5 sm:h-6 w-5 sm:w-6 text-primary" />
               </div>
-              <span className="text-xl font-bold">CV-Tracker</span>
+              <span className="text-lg sm:text-xl font-bold">CV-Tracker</span>
             </Link>
-            <p className="text-muted-foreground text-sm max-w-xs mb-6">
+            <p className="text-muted-foreground text-sm sm:text-base max-w-xs mb-6">
               The open source solution for managing your applications and
               tracking your career progress. Built with modern technologies and
               best practices.
             </p>
-            <div className="flex items-center gap-4">
-              {socialLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                  aria-label={link.name}
-                >
-                  <link.icon className="h-5 w-5 text-slate-600" />
-                </Link>
-              ))}
-            </div>
           </div>
-
           <div className="col-span-12 md:col-span-8 lg:col-span-7">
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
               <div>
-                <h3 className="text-sm font-semibold text-foreground">
+                <h3 className="text-sm font-semibold text-foreground mb-2 sm:mb-0">
                   Product
                 </h3>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
                   {footerLinks.product.map((link) => (
                     <li key={link.name}>
                       <Link
                         href={link.href}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {link.name}
                       </Link>
@@ -92,16 +68,16 @@ export function LandingFooter() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-foreground">
+                <h3 className="text-sm font-semibold text-foreground mb-2 sm:mb-0">
                   Community
                 </h3>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
                   {footerLinks.community.map((link) => (
                     <li key={link.name}>
                       <Link
                         href={link.href}
                         target="_blank"
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {link.name}
                       </Link>
@@ -112,20 +88,19 @@ export function LandingFooter() {
             </div>
           </div>
         </div>
-
-        <div className="border-t px-6 py-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-muted-foreground">
+        <div className="border-t px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs sm:text-sm text-muted-foreground order-2 sm:order-1">
               &copy; {new Date().getFullYear()} CV-Tracker. MIT License.
             </p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 order-1 sm:order-2">
               <Button variant="outline" size="sm" asChild>
                 <Link
                   href="https://github.com/mvritz/cv-tracker"
                   target="_blank"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 text-xs sm:text-sm"
                 >
-                  <Star className="h-4 w-4" />
+                  <Star className="h-3 sm:h-4 w-3 sm:w-4" />
                   Star on GitHub
                 </Link>
               </Button>
