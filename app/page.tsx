@@ -187,7 +187,7 @@ export default function LandingPage() {
         <section className="py-20 bg-slate-50" id="tracking">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
+              <div className="order-2 md:order-1">
                 <h2 className="text-3xl font-bold mb-6">
                   Intelligent Status Tracking
                 </h2>
@@ -205,15 +205,14 @@ export default function LandingPage() {
                   ))}
                 </div>
               </div>
-              <div className="flex justify-center bg-white p-8 rounded-lg shadow-sm">
-                <div className="w-[400px] h-[400px]">
+              <div className="order-1 md:order-2 flex justify-center bg-white p-4 md:p-8 rounded-lg shadow-sm">
+                <div className="w-full max-w-[400px] aspect-square">
                   <Chart data={demoData} />
                 </div>
               </div>
             </div>
           </div>
         </section>
-
         <section className="py-20 bg-white" id="integrations">
           <div className="container mx-auto max-w-6xl px-4">
             <div className="text-center mb-12">
