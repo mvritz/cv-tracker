@@ -108,7 +108,7 @@ export function EditCVDialog({ cv, open, onOpenChange }: EditCVDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
+      <DialogContent className="sm:max-w-[500px] max-h-[90vh] sm:max-h-none overflow-y-auto sm:overflow-y-visible">
         <DialogHeader>
           <DialogTitle>Edit Application</DialogTitle>
           <DialogDescription>
@@ -117,7 +117,7 @@ export function EditCVDialog({ cv, open, onOpenChange }: EditCVDialogProps) {
         </DialogHeader>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4 py-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="company">Company</Label>
                 <Input
@@ -153,7 +153,7 @@ export function EditCVDialog({ cv, open, onOpenChange }: EditCVDialogProps) {
                 placeholder="Enter company website URL"
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Status</Label>
                 <StatusSelect

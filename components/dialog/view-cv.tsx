@@ -96,12 +96,12 @@ export function ViewCVDialog({ cv, open, onOpenChange }: ViewCVDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[800px] max-h-[90vh] flex flex-col">
-        <DialogHeader className="flex flex-row items-start justify-between space-y-0 pr-6">
+        <DialogHeader className="flex flex-col sm:flex-row items-start justify-between space-y-2 sm:space-y-0 pr-6">
           <div>
-            <DialogTitle>
+            <DialogTitle className="text-lg sm:text-xl">
               {cv.company} - {cv.position}
             </DialogTitle>
-            <div className="flex items-center gap-2 mt-2">
+            <div className="flex flex-wrap items-center gap-2 mt-2">
               <Badge className={`${statusColors[cv.status]}`}>
                 {cv.status.charAt(0).toUpperCase() + cv.status.slice(1)}
               </Badge>
@@ -110,8 +110,13 @@ export function ViewCVDialog({ cv, open, onOpenChange }: ViewCVDialogProps) {
               </span>
             </div>
           </div>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={handleDownload}>
+          <div className="flex gap-2 w-full sm:w-auto">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleDownload}
+              className="flex-1 sm:flex-none"
+            >
               <Download className="h-4 w-4 mr-2" />
               Download
             </Button>
@@ -119,6 +124,7 @@ export function ViewCVDialog({ cv, open, onOpenChange }: ViewCVDialogProps) {
               variant="outline"
               size="sm"
               onClick={() => setIsFullscreen(true)}
+              className="flex-1 sm:flex-none"
             >
               <Maximize className="h-4 w-4 mr-2" />
               Fullscreen
@@ -133,7 +139,7 @@ export function ViewCVDialog({ cv, open, onOpenChange }: ViewCVDialogProps) {
           </div>
         )}
 
-        <div className="flex-1 min-h-[400px] overflow-hidden rounded border">
+        <div className="flex-1 min-h-[300px] sm:min-h-[400px] overflow-hidden rounded border">
           {pdfError ? (
             <div className="flex flex-col items-center justify-center h-full p-8 text-center">
               <FileText className="h-16 w-16 text-muted-foreground mb-4" />

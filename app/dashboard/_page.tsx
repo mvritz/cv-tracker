@@ -84,15 +84,17 @@ export function PageContent({ cvs, categories }: CVDashboardProps) {
 
         <Tabs defaultValue="all" className="w-full">
           <div className="flex items-center mb-2">
-            <TabsList>
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="uncategorized">Uncategorized</TabsTrigger>
-              {categories.map((category) => (
-                <TabsTrigger key={category.id} value={category.id.toString()}>
-                  {category.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+            <div className="overflow-x-auto">
+              <TabsList>
+                <TabsTrigger value="all">All</TabsTrigger>
+                <TabsTrigger value="uncategorized">Uncategorized</TabsTrigger>
+                {categories.map((category) => (
+                  <TabsTrigger key={category.id} value={category.id.toString()}>
+                    {category.name}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
             <Button
               variant="ghost"
               size="icon"

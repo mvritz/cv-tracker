@@ -162,7 +162,7 @@ export function ManageCategoriesDialog({
             </label>
           </div>
 
-          <ScrollArea className="h-[300px] pr-4">
+          <ScrollArea className="h-[250px] sm:h-[300px] pr-4">
             <div className="space-y-2">
               {categories.length === 0 ? (
                 <p className="text-center text-muted-foreground py-4">
@@ -172,7 +172,7 @@ export function ManageCategoriesDialog({
                 categories.map((category) => (
                   <div
                     key={category.id}
-                    className="flex items-center space-x-2 rounded-lg border p-3 transition-colors hover:bg-muted/50"
+                    className="flex items-center space-x-2 rounded-lg border p-2 sm:p-3 transition-colors hover:bg-muted/50"
                   >
                     <Checkbox
                       id={`category-${category.id}`}
